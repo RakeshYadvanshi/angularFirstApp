@@ -1,0 +1,41 @@
+﻿<h1> Orders List </h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <td>
+                        Sr. No.
+                    </td>
+                    <td>
+                        order Id
+                    </td>
+                    <td>
+                        order Date
+                    </td>
+                    <td>
+                        Action
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="order in getOrders()">
+                    <td>
+                        <span data-ng-bind="order.orderId"></span>
+                    </td>
+                    <td>
+                        <span data-ng-bind="order.orderId"></span>
+                    </td>
+                    <td>
+                        <span data-ng-bind="order.orderId"></span>
+                    </td>
+                    <td>
+                        <a data-ng-href="#/customer/{{order.customerId}}/orderdetails/{{order.orderId}}" href="">View Details</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

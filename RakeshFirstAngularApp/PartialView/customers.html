@@ -1,0 +1,60 @@
+﻿
+<h1>Customers</h1>
+<form name="customerForm">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group" data-ng-class="{'has-error' : customerForm.firstName.$invalid, 'has-success' : customerForm.firstName.$valid }">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" data-ng-model="newFirstName" required placeholder="Enter First Name">
+                <span class="error text-danger" ng-show="customerForm.firstName.$error.required">Required!</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group" data-ng-class="{'has-error' : customerForm.LastName.$invalid, 'has-success' : customerForm.LastName.$valid }">
+                <label for="LastName">Last Name:</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" required data-ng-model="newLastName" placeholder="Enter Last Name">
+                <span class="error text-danger" ng-show="customerForm.LastName.$error.required">Required!</span>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="form-group" data-ng-class="{'has-error' : customerForm.City.$invalid, 'has-success' : customerForm.City.$valid }">
+                <label for="City">City:</label>
+                <input type="text" class="form-control" id="City" name="City" required data-ng-model="newCity" placeholder="Enter City Name">
+                <span class="error text-danger" ng-show="customerForm.City.$error.required">Required!</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary top-padding" data-ng-click="addNewCustomer()">Add Customer</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="">
+    <div class="col-md-9">
+        <div id="customers" class="row">
+
+            <div class="col-md-4" data-ng-repeat="customer in customerList()">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" style="display:inline-block" data-ng-bind="getFullName(customer)"></h3>
+                        <button type="button" class="close" aria-label="delete" data-ng-click="deleteCustomer(customer.customerId)">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <span data-ng-bind="customer.city"></span>
+                        <br />
+                        <a data-ng-href="{{getOrderLink(customer)}}">view <span data-ng-bind="customer.orderCount"></span> Orders</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
